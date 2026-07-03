@@ -20,3 +20,6 @@ vector<int> inorder(TreeNode* root){
     }
     return ans;
 }
+
+
+// Stack banao, jab tk temp NULL naa ho, push kro aur temp->left jaao. Once, we reach leftmost node, usse push kro and fir temp->right pr chale jaao.
