@@ -1,0 +1,30 @@
+vector<int> morris(TreeNode* root){
+  vector<int> ans;
+  if(root== NULL){
+    return {};
+  }
+
+  TreeNode* temp= root;
+  while(temp!= NULL){
+    if(temp->left== NULL){
+      ans.push_back(temp->val);
+      temp= temp->right;
+    }
+    else{
+      TreeNode* curr= temp->left;
+      while(curr->right!= NULL && curr->right!= temp){
+        curr= curr->right;
+      }
+      if(curr->right== NULL){
+        curr->right= temp;
+        temp= temp->left;
+      }
+      else{
+        curr->right= NULL;
+        ans.push_back(temp->val);
+        temp= temp->right;
+      }
+    }
+  }
+  return ans;
+}
